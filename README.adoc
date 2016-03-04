@@ -61,12 +61,6 @@ By virtue of the fact that these tests pass, we know that the `microservices-pac
 $ gradle assemble
 ----
 
-. Next, in one terminal window, start up the provider app:
-+
-----
-$ java -jar microservices-pact-provider/build/libs/microservices-pact-provider-0.0.1-SNAPSHOT.jar
-----
-
 . Then, in another terminal window, run the pact verification:
 +
 ----

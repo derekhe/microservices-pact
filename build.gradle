@@ -27,11 +27,11 @@ allprojects {
     }
 
     ext {
-        versionFilePath = "$System.env.VERSION_FILE_PATH"
+        versionFilePath = "."
     }
 
     task loadVersion {
-        ext.myVersion = new File("${versionFilePath}/number").text
+        ext.myVersion = new File("${versionFilePath}/version").text
     }
 
     task manifestFilter(type: Copy) {
@@ -61,7 +61,7 @@ project(':microservices-pact-consumer') {
     }
 
     jar.doFirst {
-        version = new File("${versionFilePath}/number").text
+        version = new File("${versionFilePath}/version").text
     }
 }
 
@@ -71,7 +71,7 @@ project(':microservices-pact-provider') {
     apply plugin: 'com.github.johnrengelman.processes'
 
     ext {
-        pactFilePath = "$System.env.PACT_FILE"
+        pactFilePath = "./microservices-pact-consumer/target/pacts/Foo_Consumer-Foo_Provider.json"
     }
 
     task startProvider(type: com.github.jengelman.gradle.plugins.processes.tasks.JavaFork) {
@@ -92,7 +92,7 @@ project(':microservices-pact-provider') {
     }
 
     jar.doFirst {
-        version = new File("${versionFilePath}/number").text
+        version = new File("${versionFilePath}/version").text
     }
 
     pact {
